@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pros and Cons</title>
+    <link rel="stylesheet" href="../src/web_elements/style.css">
+</head>
+<body>
+    <div class="banner">Please Submit Your Approval by Commenting or Approving the Pull Request</div>
+    <button class="toggle-button" onclick="toggleMode()">Toggle Dark/Light Mode</button>
+    <h1>Do You Support Eyad?</h1>
+    <img src="../src/images/do-you-support.jpg" alt="Do You Support" class="header-image">
+    <div class="container">
+        <div class="column pros">
+            <h2>Pros</h2>
+            <ul>
+                {{PROS_LIST}}
+            </ul>
+        </div>
+        <div class="column cons">
+            <h2>Cons</h2>
+            <ul>
+                {{CONS_LIST}}
+            </ul>
+        </div>
+    </div>
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        }
+
+        // Apply saved theme on load
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+        };
+    </script>
+</body>
+</html>
