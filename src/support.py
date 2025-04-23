@@ -40,6 +40,7 @@ def generate_pros_and_cons_html(number_of_samples: int) -> None:
     )
 
     output_file = Path("./.temp/do-you-support-eyad.html")
+    output_file.parent.mkdir(parents=True, exist_ok=True)
     output_file.write_text(rendered_html, encoding="utf-8")
     log.info(f"HTML file generated: {output_file.resolve()}")
 
